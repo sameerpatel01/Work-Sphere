@@ -54,7 +54,7 @@ const Register = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/CareerConnectLogo.svg" alt="Career Connect" />
+            <img src="/WorkSphereLogo.svg" alt="WorkSphere" />
             <h3>Create a new account</h3>
           </div>
           <form>

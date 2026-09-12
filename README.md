@@ -1,4 +1,4 @@
-# Career Connect
+# WorkSphere
 
 A full-stack MERN job portal where employers post roles and job seekers apply, track applications, and manage submissions.
 
@@ -186,7 +186,14 @@ Frontend runs on Vite (default 5173+); backend on 4000.
 - Build frontend with `npm run build` then serve `dist`
 - Serve backend over HTTPS; set secure cookies in production
 
+## Author
+
+**Sameer Patel**
+- GitHub: [sameerpatel01](https://github.com/sameerpatel01)
+- LeetCode: [sam_11_](https://leetcode.com/u/sam_11_/)
+- LinkedIn: [Sameer Patel](https://www.linkedin.com/in/sameerpat11el/)
+
 ## License
 
 MIT
-# Career-connect
+

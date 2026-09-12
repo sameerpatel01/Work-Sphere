@@ -1,14 +1,25 @@
 {
-  "name": "jobportal",
+  "name": "worksphere",
   "version": "1.0.0",
-  "description": "Job Portal - Full Stack Application",
+  "type": "module",
+  "description": "WorkSphere - Modern Full-Stack Job Portal",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "install:frontend": "npm --prefix ./frontend install --legacy-peer-deps",
-    "install:backend": "npm --prefix ./backend install",
-    "build": "npm --prefix ./frontend install --legacy-peer-deps && npm --prefix ./frontend install --save-dev terser && npm --prefix ./frontend run build && cp -r frontend/dist ./dist",
-    "dev": "npm --prefix ./backend start"
+    "build": "npm --prefix backend install && npm --prefix frontend install && npm --prefix frontend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "job-portal",
+    "react",
+    "express",
+    "mongodb",
+    "worksphere"
+  ],
+  "author": "Sameer Patel",
+  "license": "MIT"
 }

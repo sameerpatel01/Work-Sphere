@@ -49,7 +49,7 @@ const Login = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/CareerConnectLogo.svg" alt="Career Connect" />
+            <img src="/WorkSphereLogo.svg" alt="WorkSphere" />
             <h3>Login to your account</h3>
           </div>
           <form>

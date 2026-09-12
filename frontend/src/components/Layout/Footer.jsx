@@ -7,12 +7,12 @@ function Footer() {
   const {isAuthorized}  = useContext(Context)
   return (
     <footer className= {isAuthorized ? "footerShow" : "footerHide"}>
-<div>&copy; All Rights Reserved by Vivek Kumar Gupta</div>
-<div>
-  <Link to={'https://github.com/learnervivek'} target='github'><FaGithub></FaGithub></Link>
-  <Link to={'https://leetcode.com/u/learnervivek/'} target='leetcode'><SiLeetcode></SiLeetcode></Link>
-  <Link to={'https://www.linkedin.com/in/learnervivek/'} target='linkedin'><FaLinkedin></FaLinkedin></Link>
-</div>
+        <div>&copy; All Rights Reserved by Sameer Patel</div>
+        <div>
+          <Link to={'https://github.com/sameerpatel01'} target='_blank' rel='noreferrer'><FaGithub /></Link>
+          <Link to={'https://leetcode.com/u/sam_11_/'} target='_blank' rel='noreferrer'><SiLeetcode /></Link>
+          <Link to={'https://www.linkedin.com/in/sameerpat11el/'} target='_blank' rel='noreferrer'><FaLinkedin /></Link>
+        </div>
       
     </footer>
   )

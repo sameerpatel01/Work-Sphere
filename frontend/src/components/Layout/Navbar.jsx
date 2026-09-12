@@ -32,8 +32,8 @@ const Navbar = () => {
     <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
       <div className="container">
         <div className="logo">
-          <img src="/CareerConnectLogo.svg" alt="Career Connect Logo" />
-          <span className="logoText">Career Connect</span>
+          <img src="/WorkSphereLogo.svg" alt="WorkSphere Logo" />
+          <span className="logoText">WorkSphere</span>
         </div>
         <ul className={!show ? "menu" : "show-menu menu"}>
           <li>

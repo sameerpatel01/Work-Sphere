@@ -55,6 +55,15 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
+app.use(async (req, res, next) => {
+  try {
+    await dbConnection();
+    next();
+  } catch (error) {
+    return next(error);
+  }
+});
+
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);

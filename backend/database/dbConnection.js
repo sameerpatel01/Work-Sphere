@@ -1,7 +1,7 @@
 import mongoose from "mongoose"; //just mongoose import!
 
 //Database connection here!
-const dbConnection = () => {
+const dbConnection = async () => {
   if (mongoose.connection.readyState >= 1) {
     return;
   }
@@ -15,15 +15,15 @@ const dbConnection = () => {
     return;
   }
 
-  mongoose
-    .connect(uri, {
+  try {
+    await mongoose.connect(uri, {
       dbName: process.env.DB_NAME || "Job_Portal",
-    })
-    .then(() => {
-      console.log("MongoDB Connected Successfully !");
-    })
-    .catch((error) => {
-      console.log(`Failed to connect ${error}`);
+      serverSelectionTimeoutMS: 8000,
     });
+    console.log("MongoDB Connected Successfully !");
+  } catch (error) {
+    console.log(`Failed to connect ${error}`);
+    throw error;
+  }
 };
 export default dbConnection;

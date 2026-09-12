@@ -1,6 +1,8 @@
-import mongoose from "mongoose"; //just mongoose import!
+import mongoose from "mongoose";
 
-//Database connection here!
+// Disable buffering to prevent 10000ms buffering timeout in serverless functions
+mongoose.set("bufferCommands", false);
+
 // Cache connection promise across serverless function invocations
 let cachedPromise = null;
 

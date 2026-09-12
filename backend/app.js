@@ -17,8 +17,6 @@ const __dirname = path.dirname(__filename);
 const app = express();
 config({ path: path.join(__dirname, ".env") });
 
-dbConnection();
-
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",

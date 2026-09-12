@@ -1,29 +1,46 @@
 import mongoose from "mongoose"; //just mongoose import!
 
 //Database connection here!
+// Cache connection promise across serverless function invocations
+let cachedPromise = null;
+
 const dbConnection = async () => {
-  if (mongoose.connection.readyState >= 1) {
-    return;
+  // If already connected (readyState 1 = connected)
+  if (mongoose.connection.readyState === 1) {
+    return mongoose.connection;
+  }
+
+  // If connection is in progress, return the existing promise so requests wait together
+  if (cachedPromise) {
+    return cachedPromise;
   }
 
   const uri = process.env.DB_URL || process.env.MONGO_URI;
 
   if (!uri || uri.includes("<your_mongo_uri>")) {
-    console.log(
-      "Failed to connect: MongoDB URI is missing or using placeholder! Please set DB_URL (or MONGO_URI) in your backend/.env file."
-    );
-    return;
+    const errorMsg =
+      "MongoDB URI is missing or undefined! Please set DB_URL in your Vercel Environment Variables.";
+    console.error(errorMsg);
+    throw new Error(errorMsg);
   }
 
-  try {
-    await mongoose.connect(uri, {
+  cachedPromise = mongoose
+    .connect(uri, {
       dbName: process.env.DB_NAME || "Job_Portal",
       serverSelectionTimeoutMS: 8000,
+    })
+    .then((mongooseInstance) => {
+      console.log("MongoDB Connected Successfully !");
+      return mongooseInstance;
+    })
+    .catch((error) => {
+      cachedPromise = null;
+      console.error(
+        `MongoDB Connection Error: ${error.message}. (If on Vercel, ensure 0.0.0.0/0 is added in MongoDB Atlas -> Network Access)`
+      );
+      throw error;
     });
-    console.log("MongoDB Connected Successfully !");
-  } catch (error) {
-    console.log(`Failed to connect ${error}`);
-    throw error;
-  }
+
+  return cachedPromise;
 };
 export default dbConnection;
